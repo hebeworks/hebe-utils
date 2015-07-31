@@ -1,0 +1,19 @@
+{
+  "name": "hebe-utils",
+  "version": "0.2.0",
+  "description": "A simple javascript module for helper extension methods",
+  "main": "dist/hebe-utils.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hebeworks/hebe-utils.git"
+  },
+  "author": "Hebe Works",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hebeworks/hebe-utils/issues"
+  },
+  "homepage": "https://github.com/hebeworks/hebe-utils#readme"
+}
