@@ -5,7 +5,7 @@
     "Nathan Smith <nathan@hebemedia.com>"
   ],
   "description": "Simple javascript helper module for things like string manipulation and date formatting",
-  "main": "hebe-utils.js",
+  "main": "dist/hebe-utils.js",
   "license": "MIT",
   "homepage": "www.hebeworks.com",
   "ignore": [
