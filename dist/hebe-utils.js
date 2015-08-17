@@ -236,6 +236,6 @@ var hebeutils = (function () {
 
 hebeutils.init();
 
-if(module){
-module.exports = hebeutils;
+if(module != null && module.exports != null){
+    module.exports = hebeutils;
 }
