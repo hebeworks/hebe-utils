@@ -203,7 +203,7 @@ var hebeutils = (function () {
                 this._initialized = true;
             },
 
-            encode: function (num) {
+            encodeFromNumber: function (num) {
                 if (!this._initialized) {
                     this.init();
                 }
@@ -215,7 +215,7 @@ var hebeutils = (function () {
                 return str;
             },
 
-            decode: function (str) {
+            decodeToNumber: function (str) {
                 if (!this._initialized) {
                     this.init();
                 }
@@ -224,6 +224,15 @@ var hebeutils = (function () {
                     num = num * this._base + this._alphabet.indexOf(str.charAt(i));
                 }
                 return num;
+            },
+
+            randomString: function (length) {
+                var text = "";
+                var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                for (var i = 0; i < length; i++) {
+                    text += possible.charAt(Math.floor(Math.random() * possible.length));
+                }
+                return text;
             }
         },
 
@@ -236,6 +245,6 @@ var hebeutils = (function () {
 
 hebeutils.init();
 
-if(typeof module !== "undefined"){
+if (typeof module !== "undefined") {
     module.exports = hebeutils;
 }
