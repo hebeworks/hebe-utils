@@ -154,8 +154,42 @@ var hebeutils = (function () {
             }
         }
 
+        // str.underscorize
+        if (typeof String.prototype.underscorize != 'function') {
+            String.prototype.underscorize = function () {
+                return this.replace(/[A-Z]/g, function (char, index) {
+                    return (index !== 0 ? '_' : '') + char.toLowerCase();
+                });
+            };
+        }
 
+        // str.dasherize
+        if (typeof String.prototype.dasherize != 'function') {
+            String.prototype.dasherize = function () {
+                return this.replace(/[A-Z]/g, function (char, index) {
+                    return (index !== 0 ? '-' : '') + char.toLowerCase();
+                });
+            };
+        }
+        // str.capitalizeFirstLetter
+        if (typeof String.prototype.capitalizeFirstLetter != 'function') {
+            String.prototype.capitalizeFirstLetter = function () {
+                return this.charAt(0).toUpperCase() + this.slice(1);
+            };
+        }
 
+        // str.capitalizeEachWord
+        if (typeof String.prototype.capitalizeEachWord != 'function') {
+            String.prototype.capitalizeEachWord = function () {
+                var index, word, words, _i, _len;
+                words = this.split(" ");
+                for (index = _i = 0, _len = words.length; _i < _len; index = ++_i) {
+                    word = words[index].charAt(0).toUpperCase();
+                    words[index] = word + words[index].substr(1);
+                }
+                return words.join(" ");
+            };
+        }
     };
 
     return {
