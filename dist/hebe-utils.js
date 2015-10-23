@@ -25,16 +25,16 @@ var hebeutils = (function () {
                 var tmp = this;
                 tmp = this.ensureNoStartingString(str);
                 tmp = this.ensureNoEndingString(str);
-                return tmp;
+                return tmp.toString();
             };
         }
         // str.ensureNoStartingString
         if (typeof String.prototype.ensureNoStartingString != 'function') {
             String.prototype.ensureNoStartingString = function (str) {
                 if (this.startsWith(str)) {
-                    return this.substr(str.length);
+                    return this.substr(str.length).toString();
                 } else {
-                    return this;
+                    return this.toString();
                 }
             };
         }
@@ -42,9 +42,9 @@ var hebeutils = (function () {
         if (typeof String.prototype.ensureStartingString != 'function') {
             String.prototype.ensureStartingString = function (str) {
                 if (!this.startsWith(str)) {
-                    return str + this;
+                    return (str + this).toString();
                 } else {
-                    return this;
+                    return this.toString();
                 }
             };
         }
@@ -64,9 +64,9 @@ var hebeutils = (function () {
         if (typeof String.prototype.ensureNoEndingString != 'function') {
             String.prototype.ensureNoEndingString = function (str) {
                 if (this.endsWith(str)) {
-                    return this.substr(0, this.length - str.length);
+                    return this.substr(0, this.length - str.length).toString();
                 } else {
-                    return this;
+                    return this.toString();
                 }
             };
         }
@@ -88,7 +88,7 @@ var hebeutils = (function () {
         if (typeof String.prototype.fixChars != 'function') {
             String.prototype.fixChars = function (str) {
                 //todo: replace any dodgy characters here
-                return this.replace('ÂŁ', '£').replace('__', "'");
+                return this.replace('ÂŁ', '£').replace('__', "'").toString();
             };
         }
 
@@ -97,21 +97,21 @@ var hebeutils = (function () {
             String.prototype.cleanDateFormats = function () {
                 var sanitizedStr = this;
                 sanitizedStr = sanitizedStr.replace('T00:00:00', '');
-                return sanitizedStr;
+                return sanitizedStr.toString();
             };
         }
         
         // str.replaceAll
         if (typeof String.prototype.replaceAll != 'function') {
             String.prototype.replaceAll = function (str1, str2, ignore) {
-                return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g, "\\$&"), (ignore ? "gi" : "g")), (typeof (str2) == "string") ? str2.replace(/\$/g, "$$$$") : str2);
+                return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g, "\\$&"), (ignore ? "gi" : "g")), (typeof (str2) == "string") ? str2.replace(/\$/g, "$$$$") : str2).toString();
             }
         }    
             
         // str.cleanText
         if (typeof String.prototype.cleanText != 'function') {
             String.prototype.cleanText = function () {
-                return this.replaceAll('Licenc', 'Licens', true);
+                return this.replaceAll('Licenc', 'Licens', true).toString();
             };
         }
         
@@ -130,7 +130,7 @@ var hebeutils = (function () {
                     // var matches = address.match(new RegExp("^(([gG][iI][rR] {0,}0[aA]{2})|((([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y]?[0-9][0-9]?)|(([a-pr-uwyzA-PR-UWYZ][0-9][a-hjkstuwA-HJKSTUW])|([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y][0-9][abehmnprv-yABEHMNPRV-Y]))) {0,}[0-9][abd-hjlnp-uw-zABD-HJLNP-UW-Z]{2}))$"));
                     var matches = this.match(new RegExp("(([gG][iI][rR] {0,}0[aA]{2})|((([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y]?[0-9][0-9]?)|(([a-pr-uwyzA-PR-UWYZ][0-9][a-hjkstuwA-HJKSTUW])|([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y][0-9][abehmnprv-yABEHMNPRV-Y]))) {0,}[0-9][abd-hjlnp-uw-zABD-HJLNP-UW-Z]{2}))"));
                     if (matches != null && matches.length > 0) {
-                        return matches[0];
+                        return matches[0].toString();
                     }
                 }
                 catch (err) {
@@ -160,7 +160,7 @@ var hebeutils = (function () {
         if (typeof String.prototype.underscorize != 'function') {
             String.prototype.underscorize = function () {
                 return this.replace(/[A-Z]/g, function (char, index) {
-                    return (index !== 0 ? '_' : '') + char.toLowerCase();
+                    return (index !== 0 ? '_' : '') + char.toLowerCase().toString();
                 });
             };
         }
@@ -169,14 +169,14 @@ var hebeutils = (function () {
         if (typeof String.prototype.dasherize != 'function') {
             String.prototype.dasherize = function () {
                 return this.replace(/[A-Z]/g, function (char, index) {
-                    return (index !== 0 ? '-' : '') + char.toLowerCase();
+                    return (index !== 0 ? '-' : '') + char.toLowerCase().toString();
                 });
             };
         }
         // str.capitalizeFirstLetter
         if (typeof String.prototype.capitalizeFirstLetter != 'function') {
             String.prototype.capitalizeFirstLetter = function () {
-                return this.charAt(0).toUpperCase() + this.slice(1);
+                return this.charAt(0).toUpperCase() + this.slice(1).toString();
             };
         }
 
@@ -189,7 +189,7 @@ var hebeutils = (function () {
                     word = words[index].charAt(0).toUpperCase();
                     words[index] = word + words[index].substr(1);
                 }
-                return words.join(" ");
+                return words.join(" ").toString();
             };
         }
     };
