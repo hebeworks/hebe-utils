@@ -65,6 +65,8 @@ var hebeutils = (function () {
             String.prototype.ensureNoEndingString = function (str) {
                 if (this.endsWith(str)) {
                     return this.substr(0, this.length - str.length);
+                } else {
+                    return this;
                 }
             };
         }
