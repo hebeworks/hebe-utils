@@ -1,6 +1,6 @@
 {
   "name": "hebe-utils",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "A simple javascript module for helper extension methods",
   "main": "dist/hebe-utils.js",
   "scripts": {
