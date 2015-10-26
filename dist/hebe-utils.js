@@ -1,24 +1,20 @@
+var moment = require('moment');
+var _ = require('underscore');
+
 var hebeutils = (function () {
-    var private_var;
-
-    function private_function() {
-    }
-
     function setupExtensionFunctions() {
-        
-        // obj.notNullOrEmpty
-        //        if (typeof Object.prototype.notNullOrEmpty != 'function') {
-        //            Object.prototype.notNullOrEmpty = function () {
-        //                return (this != null && this.length > 0);
-        //            };
-        //        }
-        // str.notNullOrEmpty
-        if (typeof String.prototype.notNullOrEmpty != 'function') {
-            String.prototype.notNullOrEmpty = function () {
-                return (this != null && this.length > 0);
+        // obj.isNullOrEmpty
+        if (typeof Object.prototype.isNullOrEmpty != 'function') {
+            Object.prototype.isNullOrEmpty = function () {
+                if (typeof this === 'undefined') {
+                    return true;
+                }
+                if (this) {
+                    return false;
+                }
+                return true;
             };
         }
-        //console.log('Setting up extension functions');
         // str.trimString(string)
         if (typeof String.prototype.trimString != 'function') {
             String.prototype.trimString = function (str) {
@@ -84,6 +80,7 @@ var hebeutils = (function () {
                 return rounded;
             };
         }
+        
         // str.fixChars
         if (typeof String.prototype.fixChars != 'function') {
             String.prototype.fixChars = function (str) {
@@ -196,6 +193,7 @@ var hebeutils = (function () {
 
     return {
         init: function () {
+            moment.locale('en-EN');
             setupExtensionFunctions();
         },
         random: function (min, max) {
@@ -269,6 +267,25 @@ var hebeutils = (function () {
                     text += possible.charAt(Math.floor(Math.random() * possible.length));
                 }
                 return text;
+            },
+
+            tryGetDate: function (dateString) {
+                if (dateString == null) { // null was passed through
+                    return null;
+                } else if (_.isDate(dateString)) { // this is already a date
+                    return dateString;
+                } else if (_.isString(dateString)) {
+                    if (moment(new Date(dateString)).isValid()) {
+                        return moment(new Date(dateString)).toDate();
+                    } else {
+                        try {
+                            return Date.parse(dateString);
+                        } catch (ex) {
+                            return null;
+                        }
+                    }
+                }
+                return null;
             }
         },
 
