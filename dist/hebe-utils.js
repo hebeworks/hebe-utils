@@ -3,17 +3,11 @@ var _ = require('underscore');
 
 var hebeutils = (function () {
     function setupExtensionFunctions() {
-        // obj.isNullOrEmpty
-        if (typeof Object.prototype.isNullOrEmpty != 'function') {
-            Object.prototype.isNullOrEmpty = function () {
-                if (typeof this === 'undefined') {
-                    return true;
-                }
-                if (this) {
-                    return false;
-                }
-                return true;
-            };
+        // str.notNullOrEmpty
+        if (typeof String.prototype.notNullOrEmpty != 'function') {
+            String.prototype.notNullOrEmpty = function () {
+                return (this != null && this.length > 0);
+            }
         }
         // str.trimString(string)
         if (typeof String.prototype.trimString != 'function') {
@@ -195,6 +189,15 @@ var hebeutils = (function () {
         init: function () {
             moment.locale('en-EN');
             setupExtensionFunctions();
+        },
+        isNullOrEmpty: function (obj) {
+            if (typeof obj === 'undefined') {
+                return true;
+            }
+            if (obj) {
+                return false;
+            }
+            return true;
         },
         random: function (min, max) {
             return Math.floor(Math.random() * (max - min + 1) + min);
