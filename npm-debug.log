@@ -1,0 +1,44 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'version',
+1 verbose cli   '4.0.3' ]
+2 info using npm@2.10.1
+3 info using node@v0.12.4
+4 info git [ 'status', '--porcelain' ]
+5 verbose version.write data { name: 'hebe-utils',
+5 verbose version.write   version: '4.0.3',
+5 verbose version.write   description: 'A simple javascript module for helper extension methods',
+5 verbose version.write   main: 'dist/hebe-utils.js',
+5 verbose version.write   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+5 verbose version.write   repository:
+5 verbose version.write    { type: 'git',
+5 verbose version.write      url: 'git+https://github.com/hebeworks/hebe-utils.git' },
+5 verbose version.write   author: 'Hebe Works',
+5 verbose version.write   license: 'MIT',
+5 verbose version.write   bugs: { url: 'https://github.com/hebeworks/hebe-utils/issues' },
+5 verbose version.write   homepage: 'https://github.com/hebeworks/hebe-utils#readme',
+5 verbose version.write   dependencies: { moment: '^2.10.6', underscore: '^1.8.3' } } to package.json
+6 info git [ 'add', 'package.json' ]
+7 info git [ 'commit', '-m', '4.0.3' ]
+8 info git [ 'tag', 'v4.0.3', '-am', '4.0.3' ]
+9 verbose stack Error: Command failed: git tag v4.0.3 -am 4.0.3
+9 verbose stack fatal: tag 'v4.0.3' already exists
+9 verbose stack
+9 verbose stack     at ChildProcess.exithandler (child_process.js:751:12)
+9 verbose stack     at ChildProcess.emit (events.js:110:17)
+9 verbose stack     at maybeClose (child_process.js:1015:16)
+9 verbose stack     at Socket.<anonymous> (child_process.js:1183:11)
+9 verbose stack     at Socket.emit (events.js:107:17)
+9 verbose stack     at Pipe.close (net.js:485:12)
+10 verbose cwd /Users/nathansmith/Sites/Hebe General/HebeUtils
+11 error Darwin 15.0.0
+12 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "version" "4.0.3"
+13 error node v0.12.4
+14 error npm  v2.10.1
+15 error code 128
+16 error Command failed: git tag v4.0.3 -am 4.0.3
+16 error fatal: tag 'v4.0.3' already exists
+17 error If you need help, you may report this error at:
+17 error     <https://github.com/npm/npm/issues>
+18 verbose exit [ 1, true ]
