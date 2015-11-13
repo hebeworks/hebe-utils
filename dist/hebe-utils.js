@@ -291,7 +291,7 @@ var hebeutils = (function () {
                 return null;
             }
         },
-
+        
         // Create Base64 Object
         Base64:
         {
@@ -305,7 +305,7 @@ var hebeutils = (function () {
                     var match = str.match(new RegExp("^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$"));
                     return (match);
                 } catch(ex) {
-                    return false;
+                    return false; // fallback to false
                 }
             }
         }
